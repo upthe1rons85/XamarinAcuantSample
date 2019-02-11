@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B9595812-D510-446E-B4D9-4948B4F24CFB}</ProjectGuid>
+    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>IOSBinding</RootNamespace>
+    <AssemblyName>IOSBinding</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\IOSBinding.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingCoreSource Include="Structs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="..\AcuantMobileSDK.embeddedframework\Resources\Frameworks\MicroBlink.framework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+      <LinkerFlags>-lc++ -liconv</LinkerFlags>
+      <Frameworks>AVFoundation AudioToolbox CoreMedia AssetsLibrary Accelerate</Frameworks>
+    </NativeReference>
+    <NativeReference Include="..\AcuantMobileSDK.embeddedframework\AcuantMobileSDK.framework\Versions\5.8\AcuantMobileSDK">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <Frameworks>CoreLocation</Frameworks>
+      <LinkerFlags>-lc++ -liconv -lz</LinkerFlags>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="MicroBlink.bundle\Info.plist" />
+    <BundleResource Include="MicroBlink.bundle\No Camera-100.png" />
+    <BundleResource Include="MicroBlink.bundle\PPbeep.wav" />
+    <BundleResource Include="MicroBlink.bundle\arrow.png" />
+    <BundleResource Include="MicroBlink.bundle\arrow%402x.png" />
+    <BundleResource Include="MicroBlink.bundle\arrow_pressed.png" />
+    <BundleResource Include="MicroBlink.bundle\arrow_pressed%402x.png" />
+    <BundleResource Include="MicroBlink.bundle\en.strings" />
+    <BundleResource Include="MicroBlink.bundle\torchoff.png" />
+    <BundleResource Include="MicroBlink.bundle\torchoff%402x.png" />
+    <BundleResource Include="MicroBlink.bundle\torchoff_pressed.png" />
+    <BundleResource Include="MicroBlink.bundle\torchoff_pressed%402x.png" />
+    <BundleResource Include="MicroBlink.bundle\torchon.png" />
+    <BundleResource Include="MicroBlink.bundle\torchon%402x.png" />
+    <BundleResource Include="MicroBlink.bundle\torchon_pressed.png" />
+    <BundleResource Include="MicroBlink.bundle\torchon_pressed%402x.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+</Project>
